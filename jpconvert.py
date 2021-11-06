@@ -75,7 +75,8 @@ def convert_to_jianpuly(lines):
             elif s in ['-','','(',')','~']:
                 pass
             elif s.startswith('0'):
-                pass
+                duration = 4*2**s.count('/')
+                symbols[i] = duration_to_letter(duration) + '0' + '.'*s.count('.')
             else:
                 symbols[i] = Note(s,baseNote).to_jianpuly()
         return ' '.join(symbols)+'\n'
